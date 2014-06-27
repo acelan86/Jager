@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0,maximum-scale=1.0" />
+        <title> </title>
+    </head>
+    <body>
+        <div 
+            style="width:80px;height:60px;padding:10px;border:1px solid #ccc;background:#efefef;"
+            data-ios-native-url="sinaweibo://userinfo?uid=2231440955"
+            data-ios-install-url="itms-apps://itunes.apple.com/cn/app/wei-bo/id350962117?mt=8"
+            data-android-native-url="sinaweibo://userinfo?uid=2231440955" 
+            data-android-install-url="http://play.google.com/store/apps/details?id=com.sina.weibo" 
+            data-package="com.sina.weibo" 
+            id="appicon"
+        >打开微博</div>
+        <script src="../src/define.js"></script>
+        <script src="../src/ad.js"></script>
+        <script src="../src/Event.js"></script>
+        <script src="../src/RedirectToNative.js"></script>
+        <script>  
+            //使用RedirectToNative
+            SATK.use('SATK.RedirectToNative', function (RedirectToNative) {
+                new RedirectToNative(document.getElementById('appicon'));
+            });
+        </script>
+    </body>
+</html>

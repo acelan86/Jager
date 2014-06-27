@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title> </title>
+    </head>
+    <body>
+        <script charset="utf-8" src="../src/Jager.full.js"></script>
+        <script>
+            var poster = "http://i1.letvimg.com/yunzhuanma/201406/05/911c4ac8a6bf2303713c4fafda8d17d9/thumb/2_320_180.jpg";
+            var ads = [
+                "http://123.125.89.55/61/30/77/letv-gug/17/ver_00_14-19627765-avc-531419-aac-64226-15040-1144519-e976e3642642914fda2546c8ccc9b07a-1400557630383.letv?crypt=32aa7f2e332&b=1314&nlh=3072&nlt=45&bf=20&p2p=1&video_type=mp4&termid=0&tss=no&geo=CN-1-9-2&tm=1433470800&key=e87db348e030b20d377e89f19210c11f&platid=100&splatid=10000&proxy=2071812404,2007471018&tag=gug&gugtype=1&type=ad_m_gaoqing_mp4&_r=0&gn=706&buss=1&qos=5&cips=61.135.152.218"
+            ];
+        </script>
+        <video 
+            poster="http://p3.v.iask.com/855/512/133834247_2.jpg"
+            src="http://220.194.200.221/edge.v.iask.com/133830098.mp4?KID=sina,viask&Expires=1402070400&ssig=SpT2uxPgAP&wshc_tag=0&wsiphost=ipdbm"
+            controls
+            id="Player"
+        ></video>
+        <script>
+            // SATK.use('SATK.storage', function (Storage) {
+            //     console.log(Storage.get('acelan-test'));
+            //     console.log(Storage.get('acelan-test-session'));
+            //     console.log(Storage.get('acelan-test-expries'));
+
+            //     Storage.set('acelan-test-session', 2);
+            //     Storage.set('acelan-test', 1, {expires : 1000 * 60 * 60});
+            //     Storage.set('acelan-test-expries', 3, {expires : 1000 * 60 * 60});
+
+            //     console.log(Storage.get('acelan-test'));
+            //     console.log(Storage.get('acelan-test-session'));
+            //     console.log(Storage.get('acelan-test-expries'));
+
+            //     Storage.remove('acelan-test');
+
+            //     console.log(Storage.get('acelan-test'));
+            //     console.log(Storage.get('acelan-test-session'));
+            //     console.log(Storage.get('acelan-test-expries'));
+            // });
+
+            // SATK.use('SATK.cookie', function (Storage) {
+            //     console.log(Storage.get('acelan-test'));
+            //     console.log(Storage.get('acelan-test-session'));
+            //     console.log(Storage.get('acelan-test-expries'));
+
+            //     Storage.set('acelan-test-session', 2);
+            //     Storage.set('acelan-test', 1, {expires : 1000 * 60 * 60});
+            //     Storage.set('acelan-test-expries', 3, {expires : 1000 * 60 * 60});
+
+            //     console.log(Storage.get('acelan-test'));
+            //     console.log(Storage.get('acelan-test-session'));
+            //     console.log(Storage.get('acelan-test-expries'));
+
+            //     Storage.remove('acelan-test');
+
+            //     console.log(Storage.get('acelan-test'));
+            //     console.log(Storage.get('acelan-test-session'));
+            //     console.log(Storage.get('acelan-test-expries'));
+            // });
+
+            // SATK.use('SATK.net', function (Net) {
+            //     Net.loadScript('http://d1.sina.com.cn/litong/zhitou/sinaads/release/sinaads.js');
+            //     Net.jsonp('http://sax.sina.com.cn/newimpress?adunitid=PDPS000000000001&rotate_count=19&TIMESTAMP=hw080keo&referral=http%3A%2F%2Fd1.sina.com.cn%2Flitong%2Fzhitou%2Fsinaads%2FgetAdCode.html%3FPDPS000000000001', function (data) {
+            //         console.log(data);
+            //     });
+            //     Net.log('http://d00.sina.com.cn/a.gif');
+            //     Net.log('http://d00.sina.com.cn/a.gif', 1);
+            // });
+            SATK.use('SATK.detect', function (detect) {
+                console.log(detect);
+            });
+
+            SATK.use('Jager.proxy', function (proxy) {
+                proxy.request('PDPS000000000001')
+                    .done(function (data) {
+                        console.log(data);
+                    });
+            });
+            SATK.use('Jager.AdPlayer', function (AdPlayer) {
+                var adPlayer = new AdPlayer(document.getElementById('Player'), {});
+            });
+        </script>
+    </body>
+</html>

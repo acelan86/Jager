@@ -1,0 +1,69 @@
+vjs_1399871700390({
+    "vast": {
+        "area_id": "1156110000",
+        "code": "",
+        "version": "3.0",
+        "stime": 1399871700,
+        "ip": "61.135.152.218",
+        "server": "hlt_show_1:1047",
+        "cuid": "4d1b403877ba4e95a2f6e141b8abb6bb",
+        "Ad": [{
+            "id": 17342,
+            "order_item_id": 18901,
+            "order_id": 1822,
+            "cuepoint_type": 2,
+            "impression_id": "72d80787bbde47269b2c3011299131c5",
+            "sub": 0,
+            "lc": 1,
+            "InLine": {
+                "AdSystem": {
+                    "cdata": "ark",
+                    "version": "001"
+                },
+                "Impression": [{
+                    "cdata": "http:\/\/ark.letv.com\/t?mid=77560"
+                }, {
+                    "cdata": "http:\/\/g.mbm.cn.miaozhen.com\/x.gif?k=2449&p=FNR&ns=[M_ADIP]&ni=[M_IESID]&na=[M_MAC]&rt=2&o="
+                }
+                ],
+                "Creatives": {
+                    "Creative": [{
+                        "CompanionAds": {
+                            "Companion": []
+                        },
+                        "id": "21690",
+                        "Linear": {
+                            "adzone_id": "43",
+                            "Duration": 15,
+                            "TrackingEvents": {
+                                "Tracking": []
+                            },
+                            "AdParameters": "{\"url\":\"http:\/\/g3.letv.com\/vod\/v1\/NTMvMi81Ni9sZXR2LWd1Zy8xNy92ZXJfMDBfMTQtMTY0NTczMjEtYXZjLTU5NDE5Mi1hYWMtNTcyOTUtMTU2MDAtMTI5NDgxNC04YjUxYWQ1YzNjYzRkNjAzOWZkYjAyOGIxYzE5YzBhNC0xMzk3ODExODA2NjI1Lm1wNA==?platid=100&splatid=10000&tag=gug&gugtype=1&type=ad_m_gaoqing_mp4\",\"sg\":\"1\"}",
+                            "VideoClicks": {
+                                "ClickTracking": [{
+                                    "cdata": "http:\/\/ark.letv.com\/t?mid=77561"
+                                }
+                                ],
+                                "ClickThrough": "http:\/\/ark.letv.com\/t?mid=77559&u=http%3A%2F%2Fe.mbm.cn.miaozhen.com%2Fr.gif%3Fk%3D2449%26p%3DFNR%26ns%3D%5BM_ADIP%5D%26ni%3D%5BM_IESID%5D%26na%3D%5BM_MAC%5D%26vo%3D35556d14f%26vr%3D2%26o%3Dhttp%253A%252F%252Fbj.bjjgyy.com%252Fshipin%252Findex.html%252F%253Fplf%253Djxwh-bjjgyy-1%2526_bdik%253DX1D01000004c000017%2523mz_ca%3D2449%2526mz_sp%3DFNR"
+                            },
+                            "Template": {
+                                "vpaid": "0",
+                                "cdata": ""
+                            }
+                        }
+                    }
+                    ]
+                }
+            }
+        }
+        ],
+        "Policy": {
+            "CuePoint": [{
+                "id": "1269",
+                "type": "2",
+                "startTime": "0",
+                "duration": "15"
+            }]
+        }
+    }
+});

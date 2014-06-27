@@ -1,0 +1,93 @@
+{
+    "VAST" : {
+        "Ad" : [
+            {
+                "id" : "12345678", //必要属性
+                "sequence" : 1, //一个大于0的值，用于标识广告在第几个播放
+                "InLine" : {
+                    "AdSystem" : "sax", //广告引擎
+                    "AdTitle" : "pre-roll", //广告名字
+                    "Impression" : "http://sax.sina.com.cn/view?t=xxx", //曝光，当广告第一帧
+                    "Creatives" : [
+                        {
+                            "sequence" : 1,
+                            "Linear" : {
+                                "Duration" : "HH:MM:SS.mmm",
+                                "MediaFiles" : [
+                                    {
+                                        "cdata" : "http://streaming.jsonpvast.org/test.mp4",
+                                        "delivery" : "progressive|streaming",
+                                        "type" : "video/mp4|webm|ogg",
+                                        "width" : 300,
+                                        "height" : 200,
+                                        "apiFramework" : "clickTAG"
+                                    }
+                                },
+                                //optional
+                                "VideoClicks" : "",
+                                "AdParameters" : "",
+                                "TrackingEvents" : [
+                                    {
+                                        /*
+                                            creativeView:
+                                            start:
+                                            firstQuartile:
+                                            midpoint:
+                                            thirdQuartile:
+                                            complete:
+                                            mute:
+                                            unmute:
+                                            pause:
+                                            rewind:
+                                            resume:
+                                            *fullscreen:
+                                            *exitFullscreen:
+                                            *expand:
+                                            *collapse:
+                                            *acceptInvitationLinear:
+                                            *closeLinear:
+                                            *skip:
+                                            *progress:
+                                         */
+                                        "event" : "firstQuartile",
+                                        "cdata" : "uri"
+                                    }
+                                ],
+                                "Icons" : ""
+                            }
+                        },
+                        // {
+                        //     "sequence" : 2,
+                        //     "Nonlinear" : {}
+                        // },
+                        {
+                            "CompanionAds" : [
+                                {},
+                                //...
+                            ]
+                        },
+                        //...
+                    ],
+                    //下面是可选内容
+                    "Description" : "", //广告描述
+                    "Advertiser" : "", //
+                    "Survey" : [
+                        {
+                            "type" : "text/javascript",
+                            "URI" : "http://survey.sax.sina.com.cn/js"
+                        },
+                        //...
+                    ],
+                    "Error" : "", //
+                    "Pricing" : "", //
+                    "Extensions" : [
+                        {},
+                        //...
+                    ]
+                },
+                //"Wrapper" : {} //第三方广告数据，与Inline选其一
+            },
+            //...
+        ]
+    }
+}
