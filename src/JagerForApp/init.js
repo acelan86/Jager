@@ -14,8 +14,7 @@ window.SATK.define('JagerForApp.init', function(require) {
         RENDER_COMPLETE: 'sax://finish',
         RENDER_ERROR: 'sax://error',
         sendMesaage: function(msg) {
-            console.log(msg);
-            // window.location.href = msg;
+            window.location.href = msg;
         }
     };
 
@@ -79,18 +78,41 @@ window.SATK.define('JagerForApp.init', function(require) {
             deffer.resolve();
         }
         return deffer;
-        
+        console.log('preload resoure ..', data);
         
     }
     
     function _render(el, data) {
+        console.log('begin render data: ', data);
+        renderImg(el, data);
+    }
+
+    /**
+     * [renderImg 单一图片格式广告渲染方法]
+     * @param  {[type]} el   [Dom element]
+     * @param  {[type]} data [description]
+     */
+    function renderImg(element, data) {
         var content = data.content[0],
             size = content.size,
-            width = parseInt(size[0], 10) + 'px',
-            height = parseInt(size[1], 10) + 'px';
+            width = parseInt(size[0], 10),
+            height = parseInt(size[1], 10),
+            containerWidth,
+            containerHeight;
 
-        el.innerHTML = [
-            '<ins style="display:block;overflow:hidden;margin:0px auto;width:' + width + ';height:' + height + '">',
+        //移动端 尺寸按照实际容器尺寸获取
+        element.style.display = 'block';
+        containerWidth = element.offsetWidth;
+        height = containerWidth / width * height;
+        width = containerWidth;
+        containerHeight = element.offsetHeight;
+        if (containerHeight !== 0) {
+            width = width * containerHeight / height ;
+            height = containerHeight < height ? containerHeight : height;
+        }
+
+        element.innerHTML = [
+            '<ins style="display:block;overflow:hidden;margin:0px auto;width:' + width + 'px;height:' + height + 'px">',
             viewer.createHTML(content.type, content.src, width, height, content.link, content.click),
             '</ins>'
         ].join('');
@@ -98,6 +120,7 @@ window.SATK.define('JagerForApp.init', function(require) {
 
     return {
         render: function(data) {
+            console.log('typeof data: ', typeof data);
             if ('nodata' === data) {
                 call2app.sendMesaage(call2app.RENDER_ERROR);
             } else {

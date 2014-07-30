@@ -11,13 +11,29 @@
         </style>
     </head>
     <body>
-        <ins id="Container" style="display:block"></ins>
+        <ins id="Container" style="display:block;width:120px;height:90px;"></ins>
         <script charset="utf-8" src="../src/JagerForApp.full.js"></script>
         <script>
 
 window.SATK.use('JagerForApp.init', function (init) {
     window.JagerForAppRender = init.render;
     init.ready();
+
+    window.JagerForAppRender({
+        "version": "1.0.1",
+        "pid": " requestid123",
+        "adunit": [{
+            "id": "PDPS000000000001",
+            "ad": [{
+                "src": ["http://img.adbox.sina.com.cn/pic/1273656690-1406085077071.jpg"],
+                "type": ["image"],
+                "link": ["http:\/\/a.sina.com.cn"],
+                "view": ["http:\/\/www.view1.com"],
+                "click": ["http:\/\/www.click1.com"],
+                "size": [320, 280]
+            }]
+        }]
+    });
 });
 
 // 原sax数据格式
@@ -44,21 +60,7 @@ window.SATK.use('JagerForApp.init', function (init) {
 //     ]
 // });
 
-window.JagerForAppRender({
-    "version": "1.0.1",
-    "pid": " requestid123",
-    "adunit": [{
-        "id": "PDPS000000000001",
-        "ad": [{
-            "src": ["http:\/\/cdn.sina.com.cn\/a.jpg"],
-            "type": ["image"],
-            "link": ["http:\/\/a.sina.com.cn"],
-            "view": ["http:\/\/www.view1.com"],
-            "click": ["http:\/\/www.click1.com"],
-            "size": [320, 280]
-        }]
-    }]
-});
+
  </script>
     </body>
 </html>
