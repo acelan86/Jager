@@ -1130,6 +1130,7 @@ window.SATK.define('JagerForApp.init', function(require) {
         RENDER_ERROR: 'sax://error',
         sendMesaage: function(msg) {
             window.location.href = msg;
+            // console.log(msg);
         }
     };
 
@@ -1183,23 +1184,30 @@ window.SATK.define('JagerForApp.init', function(require) {
             content = data.content[0];
         if (content.src.length === 1 && content.type[0] === 'image') {
             var img = new Image();
-            img.onload = img.onerror = img.onabort = function () {
-                img.onload = img.onerror = img.onabort = null;
+            img.onload = function () {
+                img.onload = null;
                 img = null;
                 deffer.resolve();
+            };
+            img.onerror = img.onabort = function () {
+                img.onerror = img.onabort = null;
+                img = null;
+                deffer.reject();
             };
             img.src = content.src[0];
         } else {
             deffer.resolve();
         }
+        console.log('preload resoure ..', content.src[0]);
         return deffer;
-        
         
     }
     
-    function _render(el, data) {
+    function _render(el, data, containerWidth, containerHeight) {
         console.log('begin render data: ', data);
-        renderImg(el, data);
+        containerWidth = ~~containerWidth / window.devicePixelRatio;
+        containerHeight = ~~containerHeight / window.devicePixelRatio;
+        renderImg(el, data, containerWidth, containerHeight);
     }
 
     /**
@@ -1207,23 +1215,22 @@ window.SATK.define('JagerForApp.init', function(require) {
      * @param  {[type]} el   [Dom element]
      * @param  {[type]} data [description]
      */
-    function renderImg(element, data) {
+    function renderImg(element, data, containerWidth, containerHeight) {
         var content = data.content[0],
             size = content.size,
             width = parseInt(size[0], 10),
-            height = parseInt(size[1], 10),
-            containerWidth,
-            containerHeight;
+            height = parseInt(size[1], 10);
 
-        //移动端 尺寸按照实际容器尺寸获取
-        element.style.display = 'block';
-        containerWidth = element.offsetWidth;
-        height = containerWidth / width * height;
-        width = containerWidth;
-        containerHeight = element.offsetHeight;
-        if (containerHeight !== 0) {
-            width = width * containerHeight / height ;
-            height = containerHeight < height ? containerHeight : height;
+        //移动端 尺寸按照实际容器尺寸获取  不再按比例拉伸
+        if (containerWidth !== 0) {
+            element.style.display = 'block';
+            // height = containerWidth / width * height;
+            width = containerWidth;
+            if (containerHeight !== 0) {
+                height = containerHeight;
+                // width = width * containerHeight / height ;
+                // height = containerHeight < height ? containerHeight : height;
+            }
         }
 
         element.innerHTML = [
@@ -1234,7 +1241,14 @@ window.SATK.define('JagerForApp.init', function(require) {
     }
 
     return {
-        render: function(data) {
+        /**
+         * [render description]
+         * @param  {[type]} data   [description]
+         * @param  {[Number]} width  [容器宽]
+         * @param  {[Number]} height [容器高度]
+         */
+        render: function(data, width, height) {
+            console.log('typeof data: ', typeof data);
             if ('nodata' === data) {
                 call2app.sendMesaage(call2app.RENDER_ERROR);
             } else {
@@ -1245,8 +1259,10 @@ window.SATK.define('JagerForApp.init', function(require) {
                     data = _adapter ? _adapter(data) : data;
                     if (data.content instanceof Array && data.content.length > 0) {
                         preloadSrc(data).done(function () {
-                            _render(el, data);
+                            _render(el, data, width, height);
                             call2app.sendMesaage(call2app.RENDER_COMPLETE);
+                        }).fail(function () {
+                            call2app.sendMesaage(call2app.RENDER_ERROR);
                         });
                     } else {
                         call2app.sendMesaage(call2app.RENDER_ERROR);

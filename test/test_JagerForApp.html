@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'/>
         <title> </title>
         <style>
             html, body{
@@ -11,56 +12,33 @@
         </style>
     </head>
     <body>
-        <ins id="Container" style="display:block;width:120px;height:90px;"></ins>
+        <ins id="Container" style="display:block;"></ins>
         <script charset="utf-8" src="../src/JagerForApp.full.js"></script>
         <script>
 
-window.SATK.use('JagerForApp.init', function (init) {
-    window.JagerForAppRender = init.render;
-    init.ready();
+            window.SATK.use('JagerForApp.init', function (init) {
+                window.JagerForAppRender = init.render;
+                init.ready();
+            });
 
-    window.JagerForAppRender({
-        "version": "1.0.1",
-        "pid": " requestid123",
-        "adunit": [{
-            "id": "PDPS000000000001",
-            "ad": [{
-                "src": ["http://img.adbox.sina.com.cn/pic/1273656690-1406085077071.jpg"],
-                "type": ["image"],
-                "link": ["http:\/\/a.sina.com.cn"],
-                "view": ["http:\/\/www.view1.com"],
-                "click": ["http:\/\/www.click1.com"],
-                "size": [320, 280]
-            }]
-        }]
-    });
-});
-
-// 原sax数据格式
-// window.JagerForAppRender({
-//     "mapUrl":[],
-//     "ad":[
-//         {
-//             "type":"an",
-//             "content":[
-//                 {
-//                     "monitor":["http:\/\/sax.sina.com.cn\/mfp\/click?type=3&t=MjAxNC0wNi0xMSAxMToxODoyMQk2MS4xMzUuMTUyLjIxOAkxMC4yMDkuMC42MF8xNDAxOTU5MjY4LjY5ODQwOQlodHRwOi8vd3d3LnNpbmEuY29tLmNuLwlQRFBTMDAwMDAwMDQ2MDIxCWQwYTNlOGRmLTZkOTEtNDkxOS05MTU5LWUwNDJjNTI1ZDI0YQlGOTNGNEI2NjA5MUQJRjkzRjRCNjYwOTFECS0JLQkzMDIwMDB8MzAyMDAwCUY5M0Y0QjY2MDkxRAlOQjEzMTIwNzQyCQlGOTNGNEI2NjA5MUQJQUUJMjIzMTQ0MDk1NQkxCS0JLQktCS0JLQktCS0JLQkx"],
-//                     "link":['http://sina.com.cn'],
-//                     "adId":"F93F4B66091D",
-//                     "type":["image"],
-//                     "volume":null,
-//                     //"src":["http://d1.sina.com.cn/201406/10/555993.html"],//url
-//                     "src" : ['http://d4.sina.com.cn/pfpghc/a969e2dda13e4a8f9d1616350c2cd038.png'], //pic
-//                     "pv":[""]
-//                 }
-//             ],
-//             "size":"240*355",
-//             "id":"PDPS000000046021"
-//         }
-//     ]
-// });
-
-
- </script>
+            function renderApp(width, height) {
+                JagerForAppRender({
+                    "version": "1.0.1",
+                    "pid": " requestid123",
+                    "adunit": [{
+                        "id": "PDPS000000000001",
+                        "ad": [{
+                            "src": ["http://img.adbox.sina.com.cn/pic/1273656690-1406085077071.jpg"],
+                            "type": ["image"],
+                            "link": ["http:\/\/a.sina.com.cn"],
+                            "view": ["http:\/\/www.view1.com"],
+                            "click": ["http:\/\/www.click1.com"],
+                            "size": [320, 280]
+                        }]
+                    }]
+                }, width, height);
+            }
+        renderApp(900, 750);
+        </script>
     </body>
 </html>
